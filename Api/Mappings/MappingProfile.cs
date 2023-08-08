@@ -12,7 +12,8 @@ namespace Api.Mappings
             CreateMap<CustomerBLL, CustomerDAL> ().ReverseMap(); 
             //Map from User to CustomerDAL
             CreateMap<User, CustomerDAL>()
-                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email));
+                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
+                .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.PhoneNumber));
         }
     }
 }
