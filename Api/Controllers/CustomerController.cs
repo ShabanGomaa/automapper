@@ -24,9 +24,10 @@ namespace Api.Controllers
                 Id = 1,
                 Name = "Customer 1"
             };
-
+        
             User user = _mapper.Map<User>(customerDAL);
-
+            user.UpdateData(customerDAL.Address, customerDAL.PhoneNumber);
+        
             return await Task.FromResult(user);
         }
 
