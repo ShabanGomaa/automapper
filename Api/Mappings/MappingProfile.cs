@@ -10,6 +10,9 @@ namespace Api.Mappings
         {
             //Map from customer DAL to customer BLL Object
             CreateMap<CustomerBLL, CustomerDAL> ().ReverseMap(); 
+            
+            //Map from user DAL to user BLL Object
+            CreateMap<UserBLL, UserDAL> ().ReverseMap(); 
         }
     }
 }
