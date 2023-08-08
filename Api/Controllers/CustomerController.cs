@@ -17,7 +17,7 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<CustomerBLL>> Get()
+        public async Task<ActionResult<User>> Get()
         {
             CustomerDAL customerDAL = new CustomerDAL()
             {
@@ -25,17 +25,13 @@ namespace Api.Controllers
                 Name = "Customer 1"
             };
 
-            CustomerBLL customerBLL = new CustomerBLL()
-            {
-                Id = customerDAL.Id,
-                Name = customerDAL.Name
-            };
+            User user = _mapper.Map<User>(customerDAL);
 
-            return await Task.FromResult(customerBLL);
+            return await Task.FromResult(user);
         }
 
         [HttpGet("GetUsingMapper")]
-        public async Task<ActionResult<CustomerBLL>> GetUsingMapper()
+        public async Task<ActionResult<User>> GetUsingMapper()
         {
             CustomerDAL customerDAL = new CustomerDAL()
             {
@@ -43,9 +39,9 @@ namespace Api.Controllers
                 Name = "Customer from automapper"
             };
 
-            CustomerBLL customerBLL = _mapper.Map<CustomerBLL>(customerDAL);
+            User user = _mapper.Map<User>(customerDAL);
 
-            return await Task.FromResult(customerBLL);
+            return await Task.FromResult(user);
         }
     }
 }
